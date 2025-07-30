@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For Khushi ❤️</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #ffc0cb, #ffe4e1);
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+      color: #333;
+    }
+
+    .box {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      max-width: 500px;
+      transition: all 0.5s ease;
+    }
+
+    button {
+      background: #ff69b4;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      margin: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background: #ff1493;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box" id="mainBox">
+    <h2 id="question">Welcome Khushi! 🌸</h2>
+    <p id="subText">I have something very special to ask you... 💖</p>
+    <button onclick="startProposal()">Next</button>
+  </div>
+
+  <script>
+    let qualities = [
+      "I will put daily efforts in our relationships not on some specific days like valentine and all .",
+      "I will make you feel important and respected .",
+      "Main tumhare pet ko bhi utna hi pyar dunga jitna tumhe.",
+      "I respect your dreams.",
+      "I will treat you like a queen.",
+      "Main kabhi jhoot nahi bolunga.",
+      "I will give you more surprises . 😄",
+      "Main tumhara therapist bhi hoon, bestfriend bhi 😎",
+      "I will make u more u .",
+      "We will be having a lot of fun during our conversations .",
+      // Add more till 100 (ye 10 hai abhi demo ke liye)
+    ];
+
+    let index = 0;
+
+    function startProposal() {
+      document.getElementById("question").textContent = "Will you be my girlfriend? 💞";
+      document.getElementById("subText").textContent = "";
+      document.getElementById("mainBox").innerHTML += `
+        <div id="buttonBox">
+          <button onclick="yesClicked()">Yes</button>
+          <button onclick="whyClicked()">Why should I?</button>
+        </div>
+      `;
+    }
+
+    function yesClicked() {
+      document.getElementById("mainBox").innerHTML = `
+        <h2>I love you so much baby ❤️</h2>
+      `;
+    }
+
+    function whyClicked() {
+      showReason();
+    }
+
+    function showReason() {
+      if(index < qualities.length) {
+        document.getElementById("mainBox").innerHTML = `
+          <p>${qualities[index]}</p>
+          <h3>Now, will you be my girlfriend?</h3>
+          <button onclick="yesClicked()">Yes</button>
+          <button onclick="showReason()">Why should I?</button>
+        `;
+        index++;
+      } else {
+        finalAsk();
+      }
+    }
+
+    function finalAsk() {
+      document.getElementById("mainBox").innerHTML = `
+        <p>These were just some of the reasons... but the biggest reason is: I truly love you. 💖</p>
+        <h3>So Khushi, will you be my girlfriend? 🥺</h3>
+        <button onclick="yesClicked()">Yes</button>
+        <button onclick="noClicked()">No</button>
+      `;
+    }
+
+    function noClicked() {
+      document.getElementById("mainBox").innerHTML = `
+        <h2>It's okay, Khushi 😊</h2>
+        <p>I respect your decision. No matter what, I’ll always wish you happiness. ❤️</p>
+      `;
+    }
+  </script>
+</body>
+</html>
